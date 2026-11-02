@@ -1,0 +1,14 @@
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.andamento {
+  margin-top: 1rem;
+}
+
+.falha {
+  color: var(--p-red-500);
+}

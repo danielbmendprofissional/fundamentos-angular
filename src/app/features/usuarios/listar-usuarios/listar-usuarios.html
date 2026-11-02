@@ -1,0 +1,11 @@
+<header class="page-header">
+  <h1>Usuários</h1>
+  <p-button label="Novo usuário" icon="pi pi-plus" (onClick)="novo()" />
+</header>
+
+<app-usuarios-lista
+  [usuarios]="service.usuarios()"
+  [carregando]="service.carregando()"
+  [erro]="service.erro()"
+  (tentarNovamente)="service.carregar()"
+/>

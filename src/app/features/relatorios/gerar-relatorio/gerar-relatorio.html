@@ -1,0 +1,11 @@
+<h1>Relatório</h1>
+<p>Processamento assíncrono: o servidor aceita o pedido (202) e o app acompanha o andamento.</p>
+
+<app-relatorio-painel
+  [relatorio]="service.relatorio()"
+  [executando]="service.executando()"
+  [erro]="service.erro()"
+  (gerar)="service.gerar()"
+  (gerarComFalha)="service.gerar(true)"
+  (cancelar)="service.cancelar()"
+/>

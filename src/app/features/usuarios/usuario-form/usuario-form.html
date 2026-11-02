@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="enviar()" novalidate>
+  <div class="field">
+    <label for="nome">Nome</label>
+    <input pInputText id="nome" formControlName="nome" autocomplete="name" fluid />
+    <app-field-error [control]="form.controls.nome" />
+  </div>
+
+  <div class="field">
+    <label for="email">E-mail</label>
+    <input pInputText id="email" type="email" formControlName="email" autocomplete="email" fluid />
+    <app-field-error [control]="form.controls.email" />
+  </div>
+
+  <div class="field">
+    <label for="telefone">Telefone (opcional)</label>
+    <input pInputText id="telefone" formControlName="telefone" autocomplete="tel" fluid />
+    <app-field-error [control]="form.controls.telefone" />
+  </div>
+
+  @if (erroServidor(); as erro) {
+    @if (!erro.fieldErrors) {
+      <p-message severity="error" role="alert">{{ erro.message }}</p-message>
+    }
+  }
+
+  <div class="actions">
+    <p-button type="submit" label="Salvar" [loading]="salvando()" />
+    <p-button type="button" label="Cancelar" severity="secondary" [outlined]="true" (onClick)="cancelado.emit()" />
+  </div>
+</form>

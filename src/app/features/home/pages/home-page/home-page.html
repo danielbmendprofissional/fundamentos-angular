@@ -1,0 +1,8 @@
+<h1>Fundamentos Angular</h1>
+<p>Base de estudo com smart/dumb components, signals, tratamento de erros, formulários, HTTP e testes.</p>
+
+@if (auth.isAuthenticated()) {
+  <a routerLink="/usuarios">Ir para usuários</a>
+} @else {
+  <p-button label="Entrar" (onClick)="auth.login('/usuarios')" />
+}

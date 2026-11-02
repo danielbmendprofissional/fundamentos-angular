@@ -1,0 +1,11 @@
+// Tema, cores e componentes vêm do PrimeNG (ver `providePrimeNG` em app.config.ts).
+// Aqui ficam apenas estilos globais mínimos, usando as variáveis do tema (--p-*).
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--p-content-background);
+  color: var(--p-text-color);
+}

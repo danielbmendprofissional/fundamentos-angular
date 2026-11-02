@@ -1,0 +1,10 @@
+<h1>Novo usuário</h1>
+
+<section class="card" aria-label="Novo usuário">
+  <app-usuario-form
+    [salvando]="service.salvando()"
+    [erroServidor]="service.erro()"
+    (enviado)="cadastrar($event)"
+    (cancelado)="voltar()"
+  />
+</section>

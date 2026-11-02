@@ -1,0 +1,34 @@
+<div class="acoes">
+  <p-button label="Gerar relatório" [disabled]="executando()" (onClick)="gerar.emit()" />
+  <p-button
+    label="Gerar (simular falha)"
+    severity="secondary"
+    [outlined]="true"
+    [disabled]="executando()"
+    (onClick)="gerarComFalha.emit()"
+  />
+  @if (executando()) {
+    <p-button label="Cancelar" severity="danger" [text]="true" (onClick)="cancelar.emit()" />
+  }
+</div>
+
+@if (erro(); as erro) {
+  <p-message severity="error" role="alert">{{ erro.message }}</p-message>
+}
+
+@if (relatorio(); as r) {
+  <section class="andamento" aria-live="polite">
+    <p-progressbar [value]="r.progresso" />
+    @switch (r.status) {
+      @case ('processando') {
+        <p>Processando… {{ r.progresso }}%</p>
+      }
+      @case ('concluido') {
+        <p>Concluído: {{ r.arquivo }}</p>
+      }
+      @case ('falhou') {
+        <p class="falha" role="alert">{{ r.motivo }}</p>
+      }
+    }
+  </section>
+}
