@@ -27,11 +27,11 @@ describe('Fundamento (dumb)', () => {
   it('lista passos, fontes e arquivos de aprofundamento', async () => {
     fixture.componentRef.setInput('experimente', ['Clique em +']);
     fixture.componentRef.setInput('fontes', [{ rotulo: 'Signals', url: 'https://angular.dev/guide/signals' }]);
-    fixture.componentRef.setInput('aprofundamento', ['signals.md']);
+    fixture.componentRef.setInput('aprofundamento', ['estado-e-di/signals.md']);
     await fixture.whenStable();
 
     expect(host().querySelector('li')?.textContent).toBe('Clique em +');
     expect(host().querySelector<HTMLAnchorElement>('footer a')?.href).toBe('https://angular.dev/guide/signals');
-    expect(host().querySelector('footer')?.textContent).toContain('signals.md');
+    expect(host().querySelector('footer')?.textContent).toContain('estado-e-di/signals.md');
   });
 });

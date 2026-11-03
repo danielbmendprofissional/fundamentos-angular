@@ -1,5 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
+// ref: 0-conteudo/formularios/formularios-reactive-vs-signal-forms.md
 /** Verdadeiro para strings compostas só de espaços (que `Validators.required` aceita). */
 export const isBlank = (value: unknown): boolean =>
   typeof value === 'string' && value.length > 0 && value.trim().length === 0;

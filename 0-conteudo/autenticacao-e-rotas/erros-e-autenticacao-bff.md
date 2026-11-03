@@ -1,6 +1,6 @@
 # Tratamento de erros e autenticação (BFF)
 
-> Este conteúdo é **desenho do projeto**; não há uma página oficial do Angular prescrevendo este modelo. O que o Angular fornece são as peças (interceptors e guards: ver [http-e-interceptors.md](http-e-interceptors.md) e [rotas-e-guards.md](rotas-e-guards.md)).
+> Este conteúdo é **desenho do projeto**; não há uma página oficial do Angular prescrevendo este modelo. O que o Angular fornece são as peças (interceptors e guards: ver [http-e-interceptors.md](../http-e-dados/http-e-interceptors.md) e [rotas-e-guards.md](rotas-e-guards.md)).
 
 ## Erros
 - Toda falha HTTP vira `AppError` (`kind`, `code`, mensagem segura, `fieldErrors`, `traceId`; entende Problem Details) no `errorInterceptor` -> `core/errors/`.

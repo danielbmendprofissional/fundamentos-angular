@@ -1,5 +1,6 @@
 import { Service, computed, signal } from '@angular/core';
 
+// ref: 0-conteudo/ux-e-plataforma/i18n.md
 /**
  * Service do caso de uso "i18n". Mostra a parte do TypeScript: `$localize` marca texto
  * fora do template. A sintaxe é `:significado|descrição@@id:texto ${valor}:nome-do-placeholder:`.

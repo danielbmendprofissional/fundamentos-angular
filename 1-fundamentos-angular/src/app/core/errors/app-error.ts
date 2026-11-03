@@ -20,6 +20,7 @@ export interface AppErrorOptions {
   cause?: unknown;
 }
 
+// ref: 0-conteudo/autenticacao-e-rotas/erros-e-autenticacao-bff.md
 /**
  * Erro normalizado da aplicação. A camada HTTP converte qualquer falha neste
  * tipo, então o restante do código nunca precisa conhecer `HttpErrorResponse`.

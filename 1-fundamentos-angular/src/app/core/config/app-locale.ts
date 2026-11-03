@@ -5,6 +5,7 @@ import { EnvironmentProviders, LOCALE_ID, makeEnvironmentProviders } from '@angu
 /** Locale da aplicação. O `index.html` já declara `lang="pt-BR"`; aqui alinhamos o Angular. */
 export const APP_LOCALE = 'pt-BR';
 
+// ref: 0-conteudo/ux-e-plataforma/pipes-datas-e-locale.md
 /**
  * Faz os pipes `date`, `currency`, `number` e `percent` formatarem em pt-BR.
  * Por padrão o Angular usa `en-US` e só esse locale vem embutido: sem isto,

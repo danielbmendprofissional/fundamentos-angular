@@ -20,6 +20,7 @@ import { retryInterceptor } from '@core/http/retry-interceptor';
 import { sessionInterceptor } from '@core/http/session-interceptor';
 import { routes } from './app.routes';
 
+// ref: 0-conteudo/http-e-dados/http-e-interceptors.md
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),

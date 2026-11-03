@@ -6,6 +6,7 @@ export interface FonteOficial {
   readonly url: string;
 }
 
+// ref: 0-conteudo/arquitetura/laboratorio-menu-e-molduras.md
 /**
  * DUMB: moldura padrão de toda página que mostra um fundamento do Angular.
  * Dá título, resumo, "o que experimentar" e fontes; o exemplo executável da
@@ -24,6 +25,6 @@ export class Fundamento {
   /** Passos curtos para o estudante executar e observar o comportamento. */
   readonly experimente = input<readonly string[]>([]);
   readonly fontes = input<readonly FonteOficial[]>([]);
-  /** Arquivos de `0-conteudo/` com o aprofundamento (ex.: `signals.md`). */
+  /** Arquivos de `0-conteudo/` com o aprofundamento (ex.: `estado-e-di/signals.md`). */
   readonly aprofundamento = input<readonly string[]>([]);
 }

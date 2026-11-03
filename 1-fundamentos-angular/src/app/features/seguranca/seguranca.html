@@ -3,7 +3,7 @@
   resumo="O Angular trata todo valor como não confiável: a interpolação escapa o texto e [innerHTML] sanitiza o HTML. Usar bypassSecurityTrust* desliga essa proteção e só se justifica para um valor que você mesmo verificou. No HTTP, o HttpClient envia o cabeçalho X-XSRF-TOKEN, mas o backend precisa emitir o cookie XSRF-TOKEN e validá-lo (o backend-mock não simula isso)."
   [experimente]="experimente"
   [fontes]="fontes"
-  [aprofundamento]="['acessibilidade-e-seguranca.md']"
+  [aprofundamento]="['ux-e-plataforma/acessibilidade-e-seguranca.md']"
 >
   <app-seguranca-painel
     [entrada]="service.entrada()"

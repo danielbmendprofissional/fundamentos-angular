@@ -9,6 +9,7 @@ export const EXEMPLOS: readonly { rotulo: string; valor: string }[] = [
   { rotulo: 'Link javascript:', valor: '<a href="javascript:alert(1)">Clique aqui</a>' },
 ];
 
+// ref: 0-conteudo/ux-e-plataforma/acessibilidade-e-seguranca.md
 /**
  * Service do caso de uso "Segurança". Guarda o texto digitado e calcula o que o sanitizador
  * do Angular devolveria. Nunca usa `bypassSecurityTrust*`: confiar num valor é decisão de risco.

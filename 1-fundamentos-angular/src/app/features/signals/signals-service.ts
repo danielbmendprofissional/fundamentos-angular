@@ -1,5 +1,6 @@
 import { Injectable, computed, effect, signal, untracked } from '@angular/core';
 
+// ref: 0-conteudo/estado-e-di/signals.md
 /**
  * Service do caso de uso "Signals": reúne signal, computed e effect num só lugar
  * para o estudante ver cada um agindo. Fornecido pelo componente smart.

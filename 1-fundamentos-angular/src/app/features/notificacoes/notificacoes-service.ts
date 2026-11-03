@@ -4,10 +4,11 @@ import { ROTULOS, RegistroNotificacao, TipoNotificacao } from './notificacao';
 
 const MAX_HISTORICO = 5;
 
+// ref: 0-conteudo/ux-e-plataforma/notificacoes.md
 /**
  * Service do caso de uso "Notificações". Usa `@Service({ autoProvided: false })`:
  * escopo de componente (listado em `providers` do smart), como nos demais casos de uso,
- * mas já no estilo `@Service` adotado para código novo (ver `0-conteudo/servico-vs-injectable.md`).
+ * mas já no estilo `@Service` adotado para código novo (ver `0-conteudo/estado-e-di/servico-vs-injectable.md`).
  */
 @Service({ autoProvided: false })
 export class NotificacoesService {

@@ -5,6 +5,7 @@ import { APP_SETTINGS } from '../config/app-config.token';
 
 const BASE_DELAY_MS = 300;
 
+// ref: 0-conteudo/http-e-dados/http-e-interceptors.md
 /**
  * Retenta apenas requisições idempotentes (GET) que falharam por rede ou 5xx,
  * com backoff exponencial. Escritas (POST/PUT/PATCH/DELETE) nunca são retentadas

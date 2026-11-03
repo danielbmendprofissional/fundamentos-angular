@@ -3,6 +3,7 @@ import { Logger } from '../logging/logger';
 import { NotificationService } from '../notifications/notification-service';
 import { toAppError } from './http-error-mapper';
 
+// ref: 0-conteudo/autenticacao-e-rotas/erros-e-autenticacao-bff.md
 /**
  * Rede de segurança para erros NÃO tratados (bugs, rejeições de promise, erros
  * em templates). Erros esperados devem ser tratados nas stores/componentes.

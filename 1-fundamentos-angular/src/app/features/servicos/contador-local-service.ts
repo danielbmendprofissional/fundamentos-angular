@@ -1,5 +1,6 @@
 import { Service, computed, signal } from '@angular/core';
 
+// ref: 0-conteudo/estado-e-di/servico-vs-injectable.md
 /**
  * `@Service({ autoProvided: false })`: NÃO entra sozinho no injetor raiz; quem usa precisa
  * listá-lo em `providers` (aqui, no componente `ContadorEscopo`). Resultado: uma instância

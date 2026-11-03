@@ -13,6 +13,7 @@ interface Estado {
   erro: AppError | null;
 }
 
+// ref: 0-conteudo/estado-e-di/signals.md
 /**
  * Service do caso de uso "listar usuários": guarda o estado em signals e expõe
  * só leitura. Fornecido pelo componente smart (`providers`), então nasce e morre com ele.

@@ -5,6 +5,7 @@ import { NovoUsuario } from '@shared/usuarios/usuario';
 import { UsuarioForm } from '../usuario-form/usuario-form';
 import { CadastrarUsuarioService } from './cadastrar-usuario-service';
 
+// ref: 0-conteudo/formularios/formularios-reactive-vs-signal-forms.md
 /**
  * SMART: injeta o service do caso de uso, decide a navegação e repassa
  * dados/eventos ao formulário (dumb). Quase sem lógica de apresentação própria.

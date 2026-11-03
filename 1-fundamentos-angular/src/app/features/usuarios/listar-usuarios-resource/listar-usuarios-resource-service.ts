@@ -3,6 +3,7 @@ import { httpResource } from '@angular/common/http';
 import { toAppError } from '@core/errors/http-error-mapper';
 import { Usuario } from '@shared/usuarios/usuario';
 
+// ref: 0-conteudo/http-e-dados/httpresource.md
 /**
  * Mesmo caso de uso de `ListarUsuariosService`, mas com `httpResource` (estável desde a v22).
  *

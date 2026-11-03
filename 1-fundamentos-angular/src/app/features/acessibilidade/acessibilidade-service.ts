@@ -3,6 +3,7 @@ import { Service, inject, signal } from '@angular/core';
 
 const MAX_ANUNCIOS = 5;
 
+// ref: 0-conteudo/ux-e-plataforma/acessibilidade-e-seguranca.md
 /**
  * Service do caso de uso "Acessibilidade". O `LiveAnnouncer` (CDK) escreve numa região
  * `aria-live` invisível, que o leitor de tela lê em voz alta sem mover o foco.

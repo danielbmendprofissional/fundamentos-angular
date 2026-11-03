@@ -10,6 +10,7 @@ export const ACCESS_TOKEN_EXPIRED = 'auth.access-token-expired';
 // Estas chamadas tratam o próprio 401 (boot e refresh) e não podem disparar o fluxo abaixo.
 const BYPASS = [ME_PATH, REFRESH_PATH];
 
+// ref: 0-conteudo/http-e-dados/http-e-interceptors.md
 /**
  * 401 com `auth.access-token-expired`: pede refresh ao backend e repete a requisição.
  * Qualquer outro 401: a sessão acabou, volta ao login.

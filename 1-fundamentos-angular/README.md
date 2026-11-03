@@ -1,93 +1,177 @@
-﻿# fundamentos-angular
+﻿# Fundamentos Angular
 
-Conteúdo de estudo de Angular.
+Laboratório de estudo dos fundamentos oficiais do Angular 22: signals, DI, HTTP, formulários, rotas, acessibilidade, i18n e mais, cada um com uma página executável.
 
-Faz parte do [fundamentos](https://github.com/danielbmendprofissional/fundamentos).
+![Angular](https://img.shields.io/badge/Angular-22.2-DD0031)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6)
+![Node](https://img.shields.io/badge/Node-24-339933)
+![Testes](https://img.shields.io/badge/testes-154%20passando-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-Base em **Angular 22** (zoneless, standalone, signals, control flow nativo, Vitest) com **PrimeNG 22** (tema Aura, segue o modo claro/escuro do sistema).
+[← Voltar à prateleira](../README.md)
 
-## Comandos
+## Sobre
 
-| Comando | O que faz |
+Projeto de estudo (não é um produto) para entender o padrão do Angular e seus fundamentos, sempre ancorado na documentação oficial em [angular.dev](https://angular.dev). Cada fundamento tem uma página no menu lateral, com resumo curto, "o que experimentar", links para a fonte oficial e botões, formulários e exemplos para executar o conceito.
+
+Pontos de partida do projeto:
+
+- **Zoneless, standalone e OnPush** em todos os componentes.
+- **Organização por feature e por caso de uso**, sem pastas por tipo (`components/`, `services/`), conforme o [guia de estilo](https://angular.dev/style-guide).
+- **Smart / dumb** como convenção do projeto (padrão da comunidade, **não** é recomendação oficial do Angular).
+- **Comentários em português** nos pontos-chave, com `// ref:` apontando para o conteúdo de estudo.
+
+## O que você aprende
+
+| Conceito | Conteúdo |
 |---|---|
-| `npm run mock` | Sobe o [backend-mock](backend-mock/README.md) em http://localhost:5000 (rode antes do `npm start`) |
-| `npm start` | Dev server em http://localhost:4200; `/api` é encaminhado pelo `proxy.conf.json` (padrão: http://localhost:5000) |
-| `npm run start:en` | Dev server com a versão em inglês (i18n) |
-| `npm run extract-i18n` | Extrai os textos marcados para `src/locale/messages.xlf` |
-| `npm run build:i18n` | Build com um bundle por idioma (pt-BR e en) |
-| `npm run build` | Build de produção |
-| `npm test` | Testes (Vitest) em watch; `npx ng test --watch=false` para CI |
-| `npx ng lint` | ESLint (angular-eslint) |
+| Organização por feature e dependências entre camadas | [organizacao-por-feature.md](../0-conteudo/arquitetura/organizacao-por-feature.md) |
+| Smart / dumb | [smart-dumb.md](../0-conteudo/arquitetura/smart-dumb.md) |
+| Menu lateral e moldura das páginas de fundamento | [laboratorio-menu-e-molduras.md](../0-conteudo/arquitetura/laboratorio-menu-e-molduras.md) |
+| Signals (`signal`, `computed`, `effect`) | [signals.md](../0-conteudo/estado-e-di/signals.md) |
+| `@Service` vs `@Injectable` | [servico-vs-injectable.md](../0-conteudo/estado-e-di/servico-vs-injectable.md) |
+| Interceptors e HTTP | [http-e-interceptors.md](../0-conteudo/http-e-dados/http-e-interceptors.md) |
+| `httpResource` | [httpresource.md](../0-conteudo/http-e-dados/httpresource.md) |
+| Rotas, guards e `roleGuard` | [rotas-e-guards.md](../0-conteudo/autenticacao-e-rotas/rotas-e-guards.md) |
+| Erros (`AppError`) e autenticação BFF | [erros-e-autenticacao-bff.md](../0-conteudo/autenticacao-e-rotas/erros-e-autenticacao-bff.md) |
+| Reactive Forms vs Signal Forms | [formularios-reactive-vs-signal-forms.md](../0-conteudo/formularios/formularios-reactive-vs-signal-forms.md) |
+| Notificações (toast) | [notificacoes.md](../0-conteudo/ux-e-plataforma/notificacoes.md) |
+| Acessibilidade e segurança no template | [acessibilidade-e-seguranca.md](../0-conteudo/ux-e-plataforma/acessibilidade-e-seguranca.md) |
+| `@defer` | [defer.md](../0-conteudo/ux-e-plataforma/defer.md) |
+| Pipes, datas e locale | [pipes-datas-e-locale.md](../0-conteudo/ux-e-plataforma/pipes-datas-e-locale.md) |
+| Internacionalização (i18n) | [i18n.md](../0-conteudo/ux-e-plataforma/i18n.md) |
 
-## Backend de mentira
+## Stack
 
-`backend-mock/` é um servidor Node sem dependências que finge o BFF, o login do Keycloak e a API de usuários, só para o front funcionar. **Não é parte do projeto Angular** e não deve crescer: o foco aqui é o front. Detalhes e cenários de demonstração (token expirado, erro de campo, erro 500) em [backend-mock/README.md](backend-mock/README.md).
+| Tecnologia | Versão instalada |
+|---|---|
+| Angular (core, router, forms, localize) | 22.2.4 (CLI 22.2.5) |
+| Angular CDK | `^22.2.5` |
+| TypeScript | 6.0.3 |
+| PrimeNG (tema Aura) + PrimeIcons | 22.1.4 + `^8.0.2` |
+| RxJS | `~7.8.0` |
+| Vitest + jsdom | 5.0.5 + `^30.0.0` |
+| ESLint com angular-eslint | `^10.12.0` + 22.6.0 |
+| Prettier | `^3.8.1` |
 
-## Estrutura
+## Pré-requisitos
 
-Organizada **por feature e por caso de uso**, sem pastas por tipo (`components/`, `services/`...), conforme o [guia de estilo](https://angular.dev/style-guide).
+- Node.js: testado com v24.22.1.
+- npm: o `package.json` declara `npm@10.9.9` em `packageManager`.
+- Angular CLI: não precisa instalar globalmente; os comandos usam o `ng` local (`npx ng` ou `npm run`).
 
+## Como rodar
+
+```bash
+# 1. dependências
+npm ci
+
+# 2. backend de mentira (BFF + login + API de usuários), em outro terminal
+npm run mock
+
+# 3. servidor de desenvolvimento
+npm start
 ```
+
+O app abre em <http://localhost:4200>. Chamadas a `/api` são encaminhadas pelo `proxy.conf.json` para o mock em <http://localhost:5000>.
+
+```bash
+# versão em inglês (i18n)
+npm run start:en
+
+# build de produção (saída em dist/fundamentos)
+npm run build
+
+# build com um bundle por idioma (pt-BR e en)
+npm run build:i18n
+
+# extrair textos marcados para src/locale/messages.xlf
+npm run extract-i18n
+
+# lint
+npx ng lint
+```
+
+## Rotas / Telas principais
+
+Tudo vive sob um único `Shell` (topo + menu lateral + conteúdo).
+
+| Rota | O que mostra | Acesso |
+|---|---|---|
+| `/` | Início | Público |
+| `/signals` | `signal`, `computed` e `effect` | Público |
+| `/servicos` | `@Service` vs `@Injectable`, escopo global e de componente | Público |
+| `/notificacoes` | Toasts de sucesso, aviso e erro no canto superior direito | Público |
+| `/acessibilidade` | `LiveAnnouncer` e `cdkTrapFocus` | Público |
+| `/seguranca` | Escape, sanitização e `[innerHTML]` | Público |
+| `/defer` | `@defer` com `on interaction`, `on timer` e `on viewport` | Público |
+| `/i18n` | Texto, atributos, plural ICU e `$localize` | Público |
+| `/pipes` | Pipes nativos e pipe customizado, locale pt-BR | Público |
+| `/usuarios` | Listagem com smart / dumb | Login |
+| `/usuarios/resource` | A mesma listagem com `httpResource` | Login |
+| `/usuarios/novo` | Cadastro com Reactive Forms | Login |
+| `/usuarios/novo-signal-forms` | O mesmo cadastro com Signal Forms | Login |
+| `/relatorios` | Processamento assíncrono | Login e perfil `admin` |
+| `/acesso-negado` | Resposta do `roleGuard` | Público |
+| `**` | Página 404 | Público |
+
+O Angular **não autentica**: as rotas com login redirecionam para `/api/v1/auth/login` (BFF). No mock, os cenários de demonstração (sessão expirada, erro de campo, erro 500) estão em [backend-mock/README.md](backend-mock/README.md).
+
+## Testes
+
+```bash
+npm test                    # modo watch
+npx ng test --watch=false   # execução única (CI)
+```
+
+Resultado da última execução: **37 arquivos, 154 testes passando** (Vitest 5 + jsdom). Os testes ficam ao lado do código (`.spec.ts`). Não há testes e2e.
+
+## Estrutura de pastas
+
+```text
 src/app/
-  core/          Infraestrutura global, sem UI de domínio
-    auth/          AuthService (reflete a sessão do BFF), guards, PAGE_REDIRECT
-    config/        APP_SETTINGS (URL da API, retries)
-    errors/        AppError, mapeamento HTTP -> AppError, GlobalErrorHandler
-    http/          Interceptors: apiUrl, session, error, retry
-    logging/       Logger (ponto único de log, sem PII)
-    notifications/ NotificationService (fachada sobre o MessageService do PrimeNG)
+  core/          Infraestrutura global: auth, config, errors, http, logging, notifications
   layout/        Shell: topo, menu lateral (constante MENU) e área de conteúdo
-  shared/        Reutilizável entre features
-    forms/         Validators e mensagens de erro
-    ui/            Componentes dumb genéricos (FieldError, Fundamento = moldura das páginas) e TelefonePipe
-    usuarios/      API compartilhada de REFERÊNCIA: usuario.ts + usuarios-api.ts
-  features/      Uma pasta por área de negócio, com lazy routes
-    home/ errors/  Início, acesso negado e 404
-    signals/ pipes/ servicos/ notificacoes/ acessibilidade/ seguranca/ defer/ i18n/   Páginas de fundamentos
-    usuarios/      Feature de referência (área privada)
-      usuario-form/            DUMB, reutilizável (cadastro e futura edição)
-      cadastrar-usuario/       SMART + cadastrar-usuario-service
-      listar-usuarios/         SMART + listar-usuarios-service
-      usuarios-lista/          DUMB, usado pelas duas listagens
-      listar-usuarios-resource/        comparativo: mesma listagem com httpResource
-      usuario-form-signal/             DUMB comparativo: formulário com Signal Forms
-      cadastrar-usuario-signal-forms/  SMART comparativo (reaproveita o service do cadastro)
+  shared/        Reutilizável: forms, ui (Fundamento, FieldError, Telefone), usuarios (API de referência)
+  features/      Uma pasta por área, com rotas lazy
+    signals/ servicos/ notificacoes/ acessibilidade/ seguranca/ defer/ i18n/ pipes/
+    usuarios/    Feature de referência: smart/dumb, httpResource e Signal Forms
+    relatorios/  Processamento assíncrono (admin)
+    home/ errors/
+backend-mock/    Servidor Node sem dependências que finge o BFF (não é parte do Angular)
+src/locale/      Arquivos de tradução (XLIFF)
 ```
 
-Conteúdo de estudo (conceitos, fontes oficiais e comparativos) em [0-conteudo/](0-conteudo/). Como o menu lateral e a moldura de cada fundamento funcionam: [laboratório](0-conteudo/laboratorio-menu-e-molduras.md).
+Aliases: `@core/*`, `@shared/*`, `@features/*`. A dependência é `features -> shared -> core`, nunca o inverso, e uma feature nunca importa de dentro de outra.
 
-Aliases: `@core/*`, `@shared/*`, `@features/*`.
-Dependência: `features -> shared -> core`; nunca o inverso, e uma feature nunca importa de dentro de outra.
+## Conteúdo de apoio
 
-## Convenções
+A teoria completa fica na [prateleira de conteúdo](../0-conteudo/README.md). Os arquivos usados por este projeto:
 
-- **Arquivos**: o nome reflete a classe (`CadastrarUsuario` -> `cadastrar-usuario.ts`). Components sem sufixo; services, APIs e demais com sufixo descritivo (`-service`, `-api`) para não colidir com o componente. Template **sempre** em `.html`; `.scss` por componente **só quando há estilo específico**, o resto vai em `styles.scss`.
-- **Testes**: `.spec.ts` ao lado do arquivo testado. Guia: "Unit tests should live in the same directory as the code-under-test".
-- **Smart/dumb** (padrão da comunidade, **não** é recomendação oficial do Angular; adotado 100% neste projeto):
-  - **Dumb**: só `input()`/`output()`; não injeta service de aplicação. Reutilizável e testável sem mock.
-  - **Smart**: injeta o service do caso de uso, dispara ações, decide navegação e repassa dados/eventos aos dumb. Fornece o service em `providers` do próprio componente (estado nasce e morre com ele).
-- **Service**: guarda o estado do caso de uso em `signal` privado + `computed` somente leitura e orquestra a API. **Código novo usa `@Service`** (`@Service({ autoProvided: false })` para casos de uso, `@Service()` para singletons); o código antigo segue com `@Injectable` (ver [servico-vs-injectable.md](0-conteudo/servico-vs-injectable.md)). (Em outros projetos isso aparece como "store"; aqui é sempre "service".)
-- **API**: só HTTP, sem estado e sem tratamento de erro. Nasce na feature; quando uma **segunda** feature precisar do recurso, é promovida para `shared/<dominio>/` (nome do domínio, nunca `shared/apis/`) junto com o modelo. `shared/usuarios/` é o exemplo a seguir. `core/http` é só para interceptors e infraestrutura.
+- [organizacao-por-feature.md](../0-conteudo/arquitetura/organizacao-por-feature.md): pastas por feature e caso de uso.
+- [smart-dumb.md](../0-conteudo/arquitetura/smart-dumb.md): componentes smart e dumb.
+- [laboratorio-menu-e-molduras.md](../0-conteudo/arquitetura/laboratorio-menu-e-molduras.md): como o menu e a moldura funcionam.
+- [signals.md](../0-conteudo/estado-e-di/signals.md): estado com signals.
+- [servico-vs-injectable.md](../0-conteudo/estado-e-di/servico-vs-injectable.md): `@Service` vs `@Injectable`.
+- [http-e-interceptors.md](../0-conteudo/http-e-dados/http-e-interceptors.md): interceptors e ordem.
+- [httpresource.md](../0-conteudo/http-e-dados/httpresource.md): `httpResource` para leituras.
+- [rotas-e-guards.md](../0-conteudo/autenticacao-e-rotas/rotas-e-guards.md): `authGuard` e `roleGuard`.
+- [erros-e-autenticacao-bff.md](../0-conteudo/autenticacao-e-rotas/erros-e-autenticacao-bff.md): `AppError` e BFF.
+- [formularios-reactive-vs-signal-forms.md](../0-conteudo/formularios/formularios-reactive-vs-signal-forms.md): os dois modelos lado a lado.
+- [notificacoes.md](../0-conteudo/ux-e-plataforma/notificacoes.md): toasts.
+- [acessibilidade-e-seguranca.md](../0-conteudo/ux-e-plataforma/acessibilidade-e-seguranca.md): foco, leitor de tela, sanitização.
+- [defer.md](../0-conteudo/ux-e-plataforma/defer.md): carregamento diferido.
+- [pipes-datas-e-locale.md](../0-conteudo/ux-e-plataforma/pipes-datas-e-locale.md): formatação por locale.
+- [i18n.md](../0-conteudo/ux-e-plataforma/i18n.md): tradução em tempo de build.
 
-## Padrões demonstrados
+## Observações
 
-- **Signals**: estado em `signal` privado + `computed` de leitura; `OnPush` em todos os componentes.
-- **HTTP**: API sem estado -> interceptors (`apiUrl`, `session`, `error`, `retry`). Retry só em GET com falha de rede/5xx, com backoff. Ordem documentada em `app.config.ts`.
-- **Tratamento de erros**: toda falha HTTP vira `AppError` (kind, `code`, mensagem segura, `fieldErrors`, `traceId`; suporta Problem Details). Erros esperados são tratados no service; `GlobalErrorHandler` é só rede de segurança. Nunca se exibe stacktrace/mensagem técnica.
-- **Formulários**: Reactive Forms tipados (`NonNullableFormBuilder`), validators reutilizáveis, `FieldError` reativo a signals, erros de servidor aplicados por campo.
-- **PrimeNG**: tema em `providePrimeNG` (`app.config.ts`); componentes importados individualmente. Notificações passam pelo `NotificationService`, então features não dependem do vendor. Estilos próprios usam variáveis `--p-*`.
-- **Autenticação (BFF)**: o Angular **não autentica**: sem tela de login/cadastro/recuperação (são do Keycloak), sem token, sem JWT. `AuthService` chama `GET /api/v1/usuarios/me` no boot (`provideAppInitializer`) e guarda o usuário num signal; 401 = deslogado. `authGuard` redireciona (página inteira) para `/api/v1/auth/login`; `roleGuard` lê `data.roles`; `sessionInterceptor` trata `auth.access-token-expired` com `POST /auth/refresh` e repete a request. Tudo isso é UX: a autorização real é do backend (403).
-- **Público vs privado**: `app.routes.ts` coloca tudo sob o `Shell`; um grupo de rotas sem path com `authGuard` protege as privadas, e o menu mostra um cadeado nelas quando deslogado.
-
-## Como criar um novo caso de uso
-
-1. Crie `features/<feature>/<caso-de-uso>/` com o componente smart (`.ts`, `.html`, `.scss` se precisar), o `<caso-de-uso>-service.ts` e os `.spec.ts`.
-2. Peças de apresentação viram componentes dumb em pastas próprias (dentro do caso de uso, ou ao lado se forem usadas por mais de um).
-3. Forneça o service em `providers` do componente smart e registre a rota lazy em `<feature>.routes.ts`.
-4. Use a API existente; se for de outra feature, siga `shared/usuarios/`.
-
-## Próximos passos sugeridos
-
-- Segunda aplicação no workspace (`ng generate application`) e biblioteca compartilhada (`ng generate library`) a partir de `core/` e `shared/`.
-- Marcar o resto do app para tradução (hoje só `/i18n`) e migração gradual (ou não) do `usuario-form` para Signal Forms, conforme o veredito dos comparativos em `0-conteudo/`.
-- E2E com Playwright.
+- **Convenção de arquivos:** o nome reflete a classe (`CadastrarUsuario` vira `cadastrar-usuario.ts`). Components sem sufixo; services e APIs com sufixo (`-service`, `-api`). Template sempre em `.html`; `.scss` por componente só quando há estilo específico.
+- **Service:** estado em `signal` privado com `computed` somente leitura. Código novo usa `@Service` (`@Service({ autoProvided: false })` para casos de uso, `@Service()` para singletons); os 16 arquivos antigos seguem com `@Injectable`. A página da API do `@Service` não traz rótulo de estabilidade, por isso nada foi migrado.
+- **API:** só HTTP, sem estado e sem tratamento de erro. Nasce na feature; quando uma segunda feature precisa do recurso, vai para `shared/<dominio>/`.
+- **Interceptors:** ordem `apiUrl`, `session`, `error`, `retry`, documentada em `app.config.ts`. O retry só vale para GET com falha de rede ou 5xx.
+- **Autenticação:** tudo no Angular é UX; a autorização real é do backend (403).
+- **Aviso no build:** `Locale data for 'pt-BR' cannot be found. Using locale data for 'pt'` é esperado: o Angular só tem dados `pt`, que é o português do Brasil.
+- **i18n:** só a página `/i18n` está marcada para tradução; o resto do app segue em pt-BR.
+- **Não testado em navegador real:** foco após navegação, leitor de tela e a versão `start:en`.
+- **Próximos passos sugeridos:** e2e com Playwright, marcar o resto do app para i18n e avaliar a migração do `usuario-form` para Signal Forms.

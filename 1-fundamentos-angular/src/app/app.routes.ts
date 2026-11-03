@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard, roleGuard } from '@core/auth/auth-guards';
 import { Shell } from './layout/shell/shell';
 
+// ref: 0-conteudo/autenticacao-e-rotas/rotas-e-guards.md
 export const routes: Routes = [
   // Tudo vive sob o mesmo Shell (menu lateral). Público ou privado é decidido pelos guards.
   {

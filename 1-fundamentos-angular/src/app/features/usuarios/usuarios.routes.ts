@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+// ref: 0-conteudo/autenticacao-e-rotas/rotas-e-guards.md
 export const USUARIOS_ROUTES: Routes = [
   {
     path: '',

@@ -6,6 +6,7 @@ import { filter } from 'rxjs';
 import { AuthService } from '@core/auth/auth-service';
 import { MENU } from './menu';
 
+// ref: 0-conteudo/arquitetura/laboratorio-menu-e-molduras.md
 /**
  * Casca única da aplicação: topo + menu lateral + conteúdo. A diferença entre
  * rotas públicas e privadas não está mais no layout e sim nos guards das rotas

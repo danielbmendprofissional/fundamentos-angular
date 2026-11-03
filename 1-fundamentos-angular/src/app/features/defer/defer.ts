@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FonteOficial, Fundamento } from '@shared/ui/fundamento/fundamento';
 import { BlocoDiferido } from './bloco-diferido/bloco-diferido';
 
+// ref: 0-conteudo/ux-e-plataforma/defer.md
 /**
  * Página do fundamento `@defer`. Sem service: não há estado de caso de uso, só template.
  * `BlocoDiferido` aparece em `imports`, mas é usado apenas dentro de `@defer`; por isso o

@@ -5,6 +5,7 @@ import { NovoUsuario } from '@shared/usuarios/usuario';
 import { CadastrarUsuarioService } from '../cadastrar-usuario/cadastrar-usuario-service';
 import { UsuarioFormSignal } from '../usuario-form-signal/usuario-form-signal';
 
+// ref: 0-conteudo/formularios/formularios-reactive-vs-signal-forms.md
 /**
  * SMART: mesma tela de `CadastrarUsuario`, trocando só o formulário dumb.
  * O service do caso de uso é reaproveitado, pois a regra "cadastrar usuário"

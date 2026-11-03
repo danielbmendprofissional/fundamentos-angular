@@ -12,6 +12,7 @@ export const REFRESH_PATH = '/api/v1/auth/refresh';
 const LOGIN_PATH = '/api/v1/auth/login';
 const LOGOUT_PATH = '/api/v1/auth/logout';
 
+// ref: 0-conteudo/autenticacao-e-rotas/erros-e-autenticacao-bff.md
 /**
  * O Angular NÃO autentica: não guarda token, não decodifica JWT, não tem tela de login.
  * Este serviço só reflete o estado da sessão mantida pelo backend (BFF + cookie).

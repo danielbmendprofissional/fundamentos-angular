@@ -2,6 +2,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from './auth-service';
 
+// ref: 0-conteudo/autenticacao-e-rotas/rotas-e-guards.md
 /** Sem sessão, faz navegação de página inteira para o login e bloqueia a rota. */
 export const authGuard: CanActivateFn = (_route, state) => {
   const auth = inject(AuthService);

@@ -5,6 +5,7 @@ import { FonteOficial, Fundamento } from '@shared/ui/fundamento/fundamento';
 import { UsuariosLista } from '../usuarios-lista/usuarios-lista';
 import { ListarUsuariosService } from './listar-usuarios-service';
 
+// ref: 0-conteudo/arquitetura/smart-dumb.md
 /** SMART: injeta o service, dispara o carregamento e alimenta a lista (dumb). */
 @Component({
   selector: 'app-listar-usuarios',

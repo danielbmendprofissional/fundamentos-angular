@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NovoUsuario, Usuario } from './usuario';
 
+// ref: 0-conteudo/arquitetura/organizacao-por-feature.md
 /**
  * REFERÊNCIA DO PADRÃO DE API COMPARTILHADA.
  *
