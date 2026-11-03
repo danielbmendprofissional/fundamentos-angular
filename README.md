@@ -9,6 +9,10 @@ oficial.
 ![Node](https://img.shields.io/badge/Node-24-339933)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
+> Este repositório existe em dois lugares: o **GitLab** é a fonte (aqui entram commits e issues) e o **GitHub** é um
+> espelho somente leitura, atualizado sozinho a cada push. Visão geral do conjunto na
+> [vitrine fundamentos](https://github.com/danielbmendprofissional/fundamentos).
+
 ## Sobre
 
 - **Um repositório só.** O projeto e o conteúdo vivem juntos, e os links entre eles são relativos.
