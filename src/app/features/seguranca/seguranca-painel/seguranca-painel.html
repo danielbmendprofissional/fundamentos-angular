@@ -1,0 +1,45 @@
+<div class="campo">
+  <label for="entrada">Texto de entrada (HTML)</label>
+  <input
+    pInputText
+    id="entrada"
+    [value]="entrada()"
+    (input)="entradaAlterada.emit($any($event.target).value)"
+  />
+</div>
+
+<div class="acoes" role="group" aria-label="Exemplos prontos">
+  @for (exemplo of exemplos(); track exemplo.rotulo) {
+    <p-button [label]="exemplo.rotulo" size="small" severity="secondary" [outlined]="true" (onClick)="entradaAlterada.emit(exemplo.valor)" />
+  }
+</div>
+
+<div class="rolagem">
+  <table class="resultado">
+    <thead>
+      <tr>
+        <th scope="col">Forma</th>
+        <th scope="col">Resultado na página</th>
+        <th scope="col">O que o Angular faz</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <!-- ngNonBindable: o Angular não interpreta as chaves, só as exibe. -->
+        <td><code ngNonBindable>{{ entrada }}</code></td>
+        <td data-teste="interpolado">{{ entrada() }}</td>
+        <td>Escapa tudo: o HTML aparece como texto, nada é executado.</td>
+      </tr>
+      <tr>
+        <td><code>[innerHTML]</code></td>
+        <td data-teste="innerhtml" [innerHTML]="entrada()"></td>
+        <td>Sanitiza: mantém tags seguras e remove o que executa código.</td>
+      </tr>
+      <tr>
+        <td>HTML após o sanitizador</td>
+        <td data-teste="sanitizado"><code>{{ sanitizado() }}</code></td>
+        <td>O texto que de fato entrou no DOM no caso acima.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

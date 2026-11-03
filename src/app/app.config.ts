@@ -10,6 +10,7 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import Aura from '@primeuix/themes/aura';
 import { MessageService } from 'primeng/api';
 import { providePrimeNG } from 'primeng/config';
+import { provideAppLocale } from '@core/config/app-locale';
 import { APP_SETTINGS, DEFAULT_APP_SETTINGS } from '@core/config/app-config.token';
 import { GlobalErrorHandler } from '@core/errors/global-error-handler';
 import { AuthService } from '@core/auth/auth-service';
@@ -22,6 +23,8 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    // Pipes de data/número em pt-BR (o padrão do Angular é en-US).
+    provideAppLocale(),
     provideRouter(routes, withComponentInputBinding()),
     // Ordem importa: a resposta/erro percorre o array de trás para frente.
     // retry vê o erro bruto, error mapeia para AppError, session já recebe o AppError.

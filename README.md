@@ -12,6 +12,9 @@ Base em **Angular 22** (zoneless, standalone, signals, control flow nativo, Vite
 |---|---|
 | `npm run mock` | Sobe o [backend-mock](backend-mock/README.md) em http://localhost:5000 (rode antes do `npm start`) |
 | `npm start` | Dev server em http://localhost:4200; `/api` é encaminhado pelo `proxy.conf.json` (padrão: http://localhost:5000) |
+| `npm run start:en` | Dev server com a versão em inglês (i18n) |
+| `npm run extract-i18n` | Extrai os textos marcados para `src/locale/messages.xlf` |
+| `npm run build:i18n` | Build com um bundle por idioma (pt-BR e en) |
 | `npm run build` | Build de produção |
 | `npm test` | Testes (Vitest) em watch; `npx ng test --watch=false` para CI |
 | `npx ng lint` | ESLint (angular-eslint) |
@@ -33,19 +36,25 @@ src/app/
     http/          Interceptors: apiUrl, session, error, retry
     logging/       Logger (ponto único de log, sem PII)
     notifications/ NotificationService (fachada sobre o MessageService do PrimeNG)
-  layout/        PublicLayout e PrivateLayout (cascas das áreas pública e privada)
+  layout/        Shell: topo, menu lateral (constante MENU) e área de conteúdo
   shared/        Reutilizável entre features
     forms/         Validators e mensagens de erro
-    ui/            Componentes dumb genéricos (FieldError)
+    ui/            Componentes dumb genéricos (FieldError, Fundamento = moldura das páginas) e TelefonePipe
     usuarios/      API compartilhada de REFERÊNCIA: usuario.ts + usuarios-api.ts
   features/      Uma pasta por área de negócio, com lazy routes
-    home/ errors/  Páginas públicas (início, acesso negado, 404)
+    home/ errors/  Início, acesso negado e 404
+    signals/ pipes/ servicos/ notificacoes/ acessibilidade/ seguranca/ defer/ i18n/   Páginas de fundamentos
     usuarios/      Feature de referência (área privada)
       usuario-form/            DUMB, reutilizável (cadastro e futura edição)
       cadastrar-usuario/       SMART + cadastrar-usuario-service
       listar-usuarios/         SMART + listar-usuarios-service
-        usuarios-lista/        DUMB
+      usuarios-lista/          DUMB, usado pelas duas listagens
+      listar-usuarios-resource/        comparativo: mesma listagem com httpResource
+      usuario-form-signal/             DUMB comparativo: formulário com Signal Forms
+      cadastrar-usuario-signal-forms/  SMART comparativo (reaproveita o service do cadastro)
 ```
+
+Conteúdo de estudo (conceitos, fontes oficiais e comparativos) em [0-conteudo/](0-conteudo/). Como o menu lateral e a moldura de cada fundamento funcionam: [laboratório](0-conteudo/laboratorio-menu-e-molduras.md).
 
 Aliases: `@core/*`, `@shared/*`, `@features/*`.
 Dependência: `features -> shared -> core`; nunca o inverso, e uma feature nunca importa de dentro de outra.
@@ -57,7 +66,7 @@ Dependência: `features -> shared -> core`; nunca o inverso, e uma feature nunca
 - **Smart/dumb** (padrão da comunidade, **não** é recomendação oficial do Angular; adotado 100% neste projeto):
   - **Dumb**: só `input()`/`output()`; não injeta service de aplicação. Reutilizável e testável sem mock.
   - **Smart**: injeta o service do caso de uso, dispara ações, decide navegação e repassa dados/eventos aos dumb. Fornece o service em `providers` do próprio componente (estado nasce e morre com ele).
-- **Service**: guarda o estado do caso de uso em `signal` privado + `computed` somente leitura e orquestra a API. (Em outros projetos isso aparece como "store"; aqui é sempre "service".)
+- **Service**: guarda o estado do caso de uso em `signal` privado + `computed` somente leitura e orquestra a API. **Código novo usa `@Service`** (`@Service({ autoProvided: false })` para casos de uso, `@Service()` para singletons); o código antigo segue com `@Injectable` (ver [servico-vs-injectable.md](0-conteudo/servico-vs-injectable.md)). (Em outros projetos isso aparece como "store"; aqui é sempre "service".)
 - **API**: só HTTP, sem estado e sem tratamento de erro. Nasce na feature; quando uma **segunda** feature precisar do recurso, é promovida para `shared/<dominio>/` (nome do domínio, nunca `shared/apis/`) junto com o modelo. `shared/usuarios/` é o exemplo a seguir. `core/http` é só para interceptors e infraestrutura.
 
 ## Padrões demonstrados
@@ -68,7 +77,7 @@ Dependência: `features -> shared -> core`; nunca o inverso, e uma feature nunca
 - **Formulários**: Reactive Forms tipados (`NonNullableFormBuilder`), validators reutilizáveis, `FieldError` reativo a signals, erros de servidor aplicados por campo.
 - **PrimeNG**: tema em `providePrimeNG` (`app.config.ts`); componentes importados individualmente. Notificações passam pelo `NotificationService`, então features não dependem do vendor. Estilos próprios usam variáveis `--p-*`.
 - **Autenticação (BFF)**: o Angular **não autentica**: sem tela de login/cadastro/recuperação (são do Keycloak), sem token, sem JWT. `AuthService` chama `GET /api/v1/usuarios/me` no boot (`provideAppInitializer`) e guarda o usuário num signal; 401 = deslogado. `authGuard` redireciona (página inteira) para `/api/v1/auth/login`; `roleGuard` lê `data.roles`; `sessionInterceptor` trata `auth.access-token-expired` com `POST /auth/refresh` e repete a request. Tudo isso é UX: a autorização real é do backend (403).
-- **Público vs privado**: `app.routes.ts` separa rotas sob `PublicLayout` (livres) e `PrivateLayout` (com `authGuard`).
+- **Público vs privado**: `app.routes.ts` coloca tudo sob o `Shell`; um grupo de rotas sem path com `authGuard` protege as privadas, e o menu mostra um cadeado nelas quando deslogado.
 
 ## Como criar um novo caso de uso
 
@@ -80,5 +89,5 @@ Dependência: `features -> shared -> core`; nunca o inverso, e uma feature nunca
 ## Próximos passos sugeridos
 
 - Segunda aplicação no workspace (`ng generate application`) e biblioteca compartilhada (`ng generate library`) a partir de `core/` e `shared/`.
-- Signal Forms, `httpResource`/`resource` como alternativa à store manual, autenticação (interceptor + guards) e i18n.
+- Marcar o resto do app para tradução (hoje só `/i18n`) e migração gradual (ou não) do `usuario-form` para Signal Forms, conforme o veredito dos comparativos em `0-conteudo/`.
 - E2E com Playwright.

@@ -1,11 +1,19 @@
-<header class="page-header">
-  <h1>Usuários</h1>
-  <p-button label="Novo usuário" icon="pi pi-plus" (onClick)="novo()" />
-</header>
+<app-fundamento
+  titulo="Smart / Dumb com signals"
+  resumo="O componente smart injeta o service do caso de uso (estado em signal privado + computed de leitura) e repassa os dados ao componente dumb por input() e output(). Smart/dumb é um padrão da comunidade, não uma recomendação oficial do Angular."
+  [experimente]="experimente"
+  [fontes]="fontes"
+  [aprofundamento]="['smart-dumb.md', 'signals.md', 'http-e-interceptors.md']"
+>
+  <div class="acoes">
+    <p-button label="Novo usuário" icon="pi pi-plus" (onClick)="novo()" />
+    <a routerLink="/usuarios/resource">Ver versão httpResource</a>
+  </div>
 
-<app-usuarios-lista
-  [usuarios]="service.usuarios()"
-  [carregando]="service.carregando()"
-  [erro]="service.erro()"
-  (tentarNovamente)="service.carregar()"
-/>
+  <app-usuarios-lista
+    [usuarios]="service.usuarios()"
+    [carregando]="service.carregando()"
+    [erro]="service.erro()"
+    (tentarNovamente)="service.carregar()"
+  />
+</app-fundamento>

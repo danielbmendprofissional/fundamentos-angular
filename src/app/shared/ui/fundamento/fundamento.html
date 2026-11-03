@@ -1,0 +1,41 @@
+<header class="cabecalho">
+  <h1>{{ titulo() }}</h1>
+  <p class="resumo">{{ resumo() }}</p>
+</header>
+
+@if (experimente().length) {
+  <!-- <details> nativo: acessível por teclado e leitor de tela sem JavaScript extra. -->
+  <details class="experimente" open>
+    <summary>O que experimentar</summary>
+    <ol>
+      @for (passo of experimente(); track passo) {
+        <li>{{ passo }}</li>
+      }
+    </ol>
+  </details>
+}
+
+<section class="area" aria-label="Exemplo executável">
+  <ng-content />
+</section>
+
+@if (fontes().length || aprofundamento().length) {
+  <footer class="fontes">
+    @if (fontes().length) {
+      <p>
+        Fontes oficiais:
+        @for (fonte of fontes(); track fonte.url; let ultimo = $last) {
+          <a [href]="fonte.url" target="_blank" rel="noopener">{{ fonte.rotulo }}</a>@if (!ultimo) {<span>, </span>}
+        }
+      </p>
+    }
+    @if (aprofundamento().length) {
+      <p>
+        Aprofundamento em <code>0-conteudo/</code>:
+        @for (arquivo of aprofundamento(); track arquivo; let ultimo = $last) {
+          <code>{{ arquivo }}</code>@if (!ultimo) {<span>, </span>}
+        }
+      </p>
+    }
+  </footer>
+}

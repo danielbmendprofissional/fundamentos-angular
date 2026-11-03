@@ -1,0 +1,16 @@
+<app-fundamento
+  titulo="httpResource"
+  resumo="httpResource é um wrapper reativo sobre o HttpClient que expõe valor, carregando e erro como signals. Dispara a requisição sozinho, cancela a anterior quando a URL muda e respeita os interceptors. Serve para leitura (GET); para POST/PUT continue com o HttpClient."
+  [experimente]="experimente"
+  [fontes]="fontes"
+  [aprofundamento]="['httpresource.md']"
+>
+  <p class="acoes"><a routerLink="/usuarios">Ver versão manual (signals + Observable)</a></p>
+
+  <app-usuarios-lista
+    [usuarios]="service.usuarios()"
+    [carregando]="service.carregando()"
+    [erro]="service.erro()"
+    (tentarNovamente)="service.recarregar()"
+  />
+</app-fundamento>

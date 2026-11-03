@@ -1,0 +1,33 @@
+@if (carregando()) {
+  <div class="lista" role="status" aria-label="Carregando usuários">
+    @for (n of placeholders; track n) {
+      <p-skeleton height="4.5rem" />
+    }
+  </div>
+} @else if (erro(); as erro) {
+  <p-message severity="error" role="alert">
+    {{ erro.message }}
+    @if (erro.retryable) {
+      <p-button label="Tentar novamente" size="small" [text]="true" (onClick)="tentarNovamente.emit()" />
+    }
+  </p-message>
+} @else if (usuarios().length === 0) {
+  <p>Nenhum usuário cadastrado.</p>
+} @else {
+  <ul class="lista">
+    @for (usuario of usuarios(); track usuario.id) {
+      <li>
+        <p-card [header]="usuario.nome" [subheader]="usuario.email">
+          @if (usuario.telefone) {
+            <!-- Pipe customizado (puro): formata (11) 91234-5678 mesmo se vier só com dígitos. -->
+            <span>{{ usuario.telefone | telefone }}</span>
+          }
+          @if (usuario.criadoEm) {
+            <!-- Pipe nativo; 'longDate' respeita o LOCALE_ID (pt-BR: "15 de março de 2026"). -->
+            <small>Cadastrado em {{ usuario.criadoEm | date: 'longDate' }}</small>
+          }
+        </p-card>
+      </li>
+    }
+  </ul>
+}

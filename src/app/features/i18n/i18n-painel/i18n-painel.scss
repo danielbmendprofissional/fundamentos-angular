@@ -1,0 +1,27 @@
+.campo {
+  display: grid;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.formatos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  dt {
+    color: var(--p-text-muted-color);
+  }
+
+  dd {
+    margin: 0.25rem 0 0;
+    font-size: 1.1rem;
+  }
+}

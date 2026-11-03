@@ -1,0 +1,12 @@
+<app-fundamento
+  titulo="@Service e @Injectable"
+  resumo="@Service é um atalho para singletons que usam inject(): fica disponível na raiz sem declarar nada. Com autoProvided: false ele vira um service de escopo de componente, fornecido em providers. @Injectable continua necessário para injeção por construtor, useClass/useValue e escopos como platform."
+  [experimente]="experimente"
+  [fontes]="fontes"
+  [aprofundamento]="['servico-vs-injectable.md']"
+>
+  <div class="cartoes">
+    <app-contador-escopo titulo="Cartão A" />
+    <app-contador-escopo titulo="Cartão B" />
+  </div>
+</app-fundamento>

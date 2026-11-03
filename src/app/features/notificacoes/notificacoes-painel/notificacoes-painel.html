@@ -1,0 +1,26 @@
+<div class="campo">
+  <label for="mensagem">Mensagem (opcional)</label>
+  <input pInputText id="mensagem" #mensagem placeholder="Deixe vazio para usar um exemplo" />
+</div>
+
+<div class="acoes" role="group" aria-label="Disparar notificação">
+  <p-button label="Ok" severity="success" icon="pi pi-check" (onClick)="disparar.emit({ tipo: 'success', mensagem: mensagem.value })" />
+  <p-button label="Aviso" severity="warn" icon="pi pi-exclamation-triangle" (onClick)="disparar.emit({ tipo: 'warn', mensagem: mensagem.value })" />
+  <p-button label="Erro" severity="danger" icon="pi pi-times-circle" (onClick)="disparar.emit({ tipo: 'error', mensagem: mensagem.value })" />
+</div>
+
+<h2>Histórico desta página</h2>
+@if (historico().length === 0) {
+  <p>Nenhuma notificação disparada ainda.</p>
+} @else {
+  <ul class="historico" data-teste="historico">
+    @for (item of historico(); track item.id) {
+      <li>
+        <strong [class]="'tipo ' + item.tipo">{{ rotulos[item.tipo] }}</strong>
+        <span>{{ item.mensagem }}</span>
+        <small>{{ item.hora | date: 'mediumTime' }}</small>
+      </li>
+    }
+  </ul>
+  <p-button label="Limpar histórico" size="small" severity="secondary" [text]="true" (onClick)="limpar.emit()" />
+}

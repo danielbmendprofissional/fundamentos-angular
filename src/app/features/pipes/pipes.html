@@ -1,0 +1,18 @@
+<app-fundamento
+  titulo="Pipes e locale"
+  resumo="Pipes transformam valores no template e são puros por padrão. Os de data e número usam o LOCALE_ID da aplicação (aqui, pt-BR); sem configurar, o Angular formata em en-US. O pipe telefone é customizado e só delega para uma função."
+  [experimente]="experimente"
+  [fontes]="fontes"
+  [aprofundamento]="['pipes-datas-e-locale.md']"
+>
+  <app-pipes-painel
+    [numero]="service.entradas().numero"
+    [data]="service.entradas().data"
+    [telefone]="service.entradas().telefone"
+    [texto]="service.entradas().texto"
+    (numeroAlterado)="service.definirNumero($event)"
+    (dataAlterada)="service.definirData($event)"
+    (telefoneAlterado)="service.definirTelefone($event)"
+    (textoAlterado)="service.definirTexto($event)"
+  />
+</app-fundamento>

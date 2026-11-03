@@ -1,0 +1,35 @@
+.valores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 0 0 1rem;
+
+  dt {
+    color: var(--p-text-muted-color);
+  }
+
+  dd {
+    margin: 0.25rem 0 0;
+    font-size: 1.25rem;
+  }
+
+  .grande {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+}
+
+.acoes,
+.passos {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.registro {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-family: ui-monospace, monospace;
+}

@@ -1,0 +1,12 @@
+<h1>Fundamentos Angular</h1>
+<p>
+  Laboratório de estudo: cada item do menu lateral abre um fundamento do Angular com uma explicação curta,
+  fontes oficiais e um exemplo para executar (botões, formulários, requisições).
+</p>
+<p>Itens com cadeado exigem login. Para entrar, use o botão abaixo (login simulado pelo backend-mock).</p>
+
+@if (auth.isAuthenticated()) {
+  <p>Você já está logado. Escolha um tópico no menu.</p>
+} @else {
+  <p-button label="Entrar" (onClick)="auth.login('/usuarios')" />
+}

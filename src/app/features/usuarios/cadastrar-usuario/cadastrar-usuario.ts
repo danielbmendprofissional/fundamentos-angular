@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { FonteOficial, Fundamento } from '@shared/ui/fundamento/fundamento';
 import { NovoUsuario } from '@shared/usuarios/usuario';
 import { UsuarioForm } from '../usuario-form/usuario-form';
 import { CadastrarUsuarioService } from './cadastrar-usuario-service';
@@ -11,7 +12,7 @@ import { CadastrarUsuarioService } from './cadastrar-usuario-service';
 @Component({
   selector: 'app-cadastrar-usuario',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [UsuarioForm],
+  imports: [RouterLink, Fundamento, UsuarioForm],
   providers: [CadastrarUsuarioService],
   templateUrl: './cadastrar-usuario.html',
   styleUrl: './cadastrar-usuario.scss',
@@ -19,6 +20,17 @@ import { CadastrarUsuarioService } from './cadastrar-usuario-service';
 export class CadastrarUsuario {
   protected readonly service = inject(CadastrarUsuarioService);
   private readonly router = inject(Router);
+
+  protected readonly experimente = [
+    'Envie o formulário vazio: cada campo obrigatório mostra "Campo obrigatório.".',
+    'Digite um telefone inválido (ex.: 123) e saia do campo: "Informe um telefone com DDD.".',
+    'Cadastre com o e-mail carlos@exemplo.com: o servidor devolve erro por campo e ele aparece no campo e-mail.',
+    'Cadastre com o nome erro500: o erro geral vira uma notificação (no canto superior direito), sem stacktrace.',
+  ];
+
+  protected readonly fontes: readonly FonteOficial[] = [
+    { rotulo: 'Reactive forms', url: 'https://angular.dev/guide/forms/reactive-forms' },
+  ];
 
   protected cadastrar(usuario: NovoUsuario): void {
     this.service.cadastrar(usuario).subscribe(() => this.voltar());

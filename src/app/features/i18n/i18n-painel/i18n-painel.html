@@ -1,0 +1,46 @@
+<!-- 1) Texto simples: o atributo i18n marca o conteúdo; "@@id" fixa o identificador. -->
+<h2 i18n="@@i18n.painel.titulo">Texto marcado para tradução</h2>
+
+<!-- 2) Interpolação dentro do texto vira um placeholder na tradução. -->
+<p i18n="Saudação com o nome digitado@@i18n.painel.ola" data-teste="ola">Olá, {{ nome() }}!</p>
+
+<div class="campo">
+  <label for="nome" i18n="@@i18n.painel.rotulo-nome">Seu nome</label>
+  <!-- 3) Atributos: i18n-<atributo> traduz o valor do atributo correspondente. -->
+  <input
+    pInputText
+    id="nome"
+    [value]="nome()"
+    i18n-placeholder="@@i18n.painel.placeholder-nome"
+    placeholder="Digite um nome"
+    (input)="nomeAlterado.emit($any($event.target).value)"
+  />
+</div>
+
+<!-- 4) Texto montado em TypeScript com $localize (vem pronto do service). -->
+<p data-teste="saudacao">{{ saudacao() }}</p>
+
+<!-- 5) ICU plural: a regra de plural muda por idioma (o inglês não tem "nenhum"; outros idiomas têm mais formas). -->
+<!-- O ICU fica colado nas tags: espaços ao redor virariam uma mensagem extra, só com o embrulho. -->
+<p i18n="@@i18n.painel.itens" data-teste="itens">{quantidade(), plural, =0 {Nenhum item} =1 {Um item} other {{{ quantidade() }} itens}}</p>
+<div class="acoes">
+  <p-button i18n-label="@@i18n.painel.adicionar" label="Adicionar item" size="small" (onClick)="adicionar.emit()" />
+  <p-button i18n-label="@@i18n.painel.zerar" label="Zerar" size="small" severity="secondary" [outlined]="true" (onClick)="zerar.emit()" />
+</div>
+
+<h2 i18n="@@i18n.painel.formatos">Formatos do idioma ativo</h2>
+<dl class="formatos">
+  <div>
+    <dt i18n="@@i18n.painel.locale-ativo">Locale ativo (LOCALE_ID)</dt>
+    <dd data-teste="locale">{{ locale() }}</dd>
+  </div>
+  <!-- Pipes de data e moeda NÃO usam i18n: eles já seguem o LOCALE_ID. -->
+  <div>
+    <dt i18n="@@i18n.painel.data">Data</dt>
+    <dd data-teste="data">{{ agora() | date: 'fullDate' }}</dd>
+  </div>
+  <div>
+    <dt i18n="@@i18n.painel.valor">Valor</dt>
+    <dd data-teste="valor">{{ 1234.5 | currency: 'BRL' }}</dd>
+  </div>
+</dl>

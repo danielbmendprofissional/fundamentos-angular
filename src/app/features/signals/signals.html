@@ -1,0 +1,19 @@
+<app-fundamento
+  titulo="Signals"
+  resumo="Signal é um valor reativo: quem o lê é avisado quando ele muda. computed deriva outro valor (somente leitura e memoizado) e effect roda um efeito colateral. O estado fica privado no service; a tela só lê."
+  [experimente]="experimente"
+  [fontes]="fontes"
+  [aprofundamento]="['signals.md']"
+>
+  <app-signals-painel
+    [valor]="service.valor()"
+    [passo]="service.passo()"
+    [dobro]="service.dobro()"
+    [ehPar]="service.ehPar()"
+    [registro]="service.registro()"
+    (incrementar)="service.incrementar()"
+    (decrementar)="service.decrementar()"
+    (zerar)="service.zerar()"
+    (passoAlterado)="service.definirPasso($event)"
+  />
+</app-fundamento>

@@ -14,8 +14,8 @@ const CONTAS = [
 ];
 
 const usuarios = [
-  { id: '1', nome: 'Carlos Lima', email: 'carlos@exemplo.com', telefone: '(11) 91234-5678' },
-  { id: '2', nome: 'Diana Souza', email: 'diana@exemplo.com' },
+  { id: '1', nome: 'Carlos Lima', email: 'carlos@exemplo.com', telefone: '(11) 91234-5678', criadoEm: '2026-03-15T14:30:00Z' },
+  { id: '2', nome: 'Diana Souza', email: 'diana@exemplo.com', telefone: '1133334444', criadoEm: '2026-10-02T09:05:00Z' },
 ];
 
 /** Processamentos assíncronos: id -> { inicio, falhar }. */
@@ -98,7 +98,8 @@ function sessaoDe(req) {
 const servidor = createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   const rota = `${req.method} ${url.pathname}`;
-  console.log(rota);
+  // Só loga o que é do app: coletores externos (ex.: Prometheus/Alloy) batem em /metrics sem parar.
+  if (url.pathname !== '/metrics') console.log(rota);
   await pausa();
 
   // --- Fluxo de login/logout (redirects de página inteira) ---
@@ -177,7 +178,7 @@ const servidor = createServer(async (req, res) => {
       return problema(res, 422, { title: 'Dados inválidos', errors });
     }
 
-    const criado = { id: String(usuarios.length + 1), ...dados };
+    const criado = { id: String(usuarios.length + 1), ...dados, criadoEm: new Date().toISOString() };
     usuarios.unshift(criado);
     return json(res, 201, criado);
   }

@@ -1,0 +1,19 @@
+<section class="cartao" [attr.aria-label]="titulo()">
+  <h2>{{ titulo() }}</h2>
+
+  <dl>
+    <div>
+      <dt>Global <small>(@Service, raiz)</small></dt>
+      <dd data-teste="global">{{ global() }}</dd>
+    </div>
+    <div>
+      <dt>Local <small>(@Service autoProvided: false)</small></dt>
+      <dd data-teste="local">{{ local() }}</dd>
+    </div>
+  </dl>
+
+  <div class="acoes">
+    <p-button label="+ global" size="small" (onClick)="incrementarGlobal.emit()" />
+    <p-button label="+ local" size="small" severity="secondary" (onClick)="incrementarLocal.emit()" />
+  </div>
+</section>

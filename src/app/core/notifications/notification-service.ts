@@ -19,6 +19,10 @@ export class NotificationService {
     this.messages.add({ severity: 'error', detail: message, life: LIFE_MS });
   }
 
+  warn(message: string): void {
+    this.messages.add({ severity: 'warn', detail: message, life: LIFE_MS });
+  }
+
   info(message: string): void {
     this.messages.add({ severity: 'info', detail: message, life: LIFE_MS });
   }

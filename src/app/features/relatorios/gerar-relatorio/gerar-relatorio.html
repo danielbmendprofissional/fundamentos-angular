@@ -1,11 +1,16 @@
-<h1>Relatório</h1>
-<p>Processamento assíncrono: o servidor aceita o pedido (202) e o app acompanha o andamento.</p>
-
-<app-relatorio-painel
-  [relatorio]="service.relatorio()"
-  [executando]="service.executando()"
-  [erro]="service.erro()"
-  (gerar)="service.gerar()"
-  (gerarComFalha)="service.gerar(true)"
-  (cancelar)="service.cancelar()"
-/>
+<app-fundamento
+  titulo="Processamento assíncrono e roleGuard"
+  resumo="O servidor aceita o pedido (202 Accepted) e o app acompanha o andamento por polling, com limite total de tempo e cancelamento. A rota só abre para o perfil admin, via roleGuard (conveniência de UX: a autorização real é do backend)."
+  [experimente]="experimente"
+  [fontes]="fontes"
+  [aprofundamento]="['rotas-e-guards.md', 'http-e-interceptors.md']"
+>
+  <app-relatorio-painel
+    [relatorio]="service.relatorio()"
+    [executando]="service.executando()"
+    [erro]="service.erro()"
+    (gerar)="service.gerar()"
+    (gerarComFalha)="service.gerar(true)"
+    (cancelar)="service.cancelar()"
+  />
+</app-fundamento>

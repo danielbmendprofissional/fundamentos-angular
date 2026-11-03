@@ -1,0 +1,38 @@
+<!-- Mostra a primeira mensagem de erro do campo, só depois de tocado (mesma regra do app-field-error). -->
+<ng-template #erroDoCampo let-campo>
+  @if (campo().touched() && campo().invalid()) {
+    <p-message severity="error" size="small" variant="simple">{{ campo().errors()[0].message }}</p-message>
+  }
+</ng-template>
+
+<form (submit)="enviar($event)" novalidate>
+  <div class="field">
+    <label for="nome">Nome</label>
+    <!-- [formField] liga o input ao campo: valor e touched sincronizam nos dois sentidos. -->
+    <input pInputText id="nome" [formField]="form.nome" autocomplete="name" fluid />
+    <ng-container *ngTemplateOutlet="erroDoCampo; context: { $implicit: form.nome }" />
+  </div>
+
+  <div class="field">
+    <label for="email">E-mail</label>
+    <input pInputText id="email" type="email" [formField]="form.email" autocomplete="email" fluid />
+    <ng-container *ngTemplateOutlet="erroDoCampo; context: { $implicit: form.email }" />
+  </div>
+
+  <div class="field">
+    <label for="telefone">Telefone (opcional)</label>
+    <input pInputText id="telefone" [formField]="form.telefone" autocomplete="tel" fluid />
+    <ng-container *ngTemplateOutlet="erroDoCampo; context: { $implicit: form.telefone }" />
+  </div>
+
+  @if (erroServidor(); as erro) {
+    @if (!erro.fieldErrors) {
+      <p-message severity="error" role="alert">{{ erro.message }}</p-message>
+    }
+  }
+
+  <div class="actions">
+    <p-button type="submit" label="Salvar" [loading]="salvando()" />
+    <p-button type="button" label="Cancelar" severity="secondary" [outlined]="true" (onClick)="cancelado.emit()" />
+  </div>
+</form>

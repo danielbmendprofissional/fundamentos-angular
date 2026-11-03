@@ -1,0 +1,31 @@
+.cartao {
+  padding: 1rem;
+  border: 1px solid var(--p-content-border-color);
+  border-radius: 8px;
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+  }
+
+  dl {
+    display: flex;
+    gap: 2rem;
+    margin: 0 0 1rem;
+  }
+
+  dt {
+    color: var(--p-text-muted-color);
+  }
+
+  dd {
+    margin: 0.25rem 0 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+}
+
+.acoes {
+  display: flex;
+  gap: 0.5rem;
+}

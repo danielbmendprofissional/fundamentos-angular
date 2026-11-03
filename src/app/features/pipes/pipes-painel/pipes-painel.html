@@ -1,0 +1,60 @@
+<div class="campos">
+  <div class="campo">
+    <label for="numero">Número</label>
+    <input pInputText id="numero" type="number" step="any" [value]="numero() ?? ''" (input)="numeroAlterado.emit(valorDe($event))" />
+  </div>
+  <div class="campo">
+    <label for="data">Data</label>
+    <input pInputText id="data" type="date" [value]="data()" (input)="dataAlterada.emit(valorDe($event))" />
+  </div>
+  <div class="campo">
+    <label for="telefone">Telefone</label>
+    <input pInputText id="telefone" [value]="telefone()" (input)="telefoneAlterado.emit(valorDe($event))" />
+  </div>
+  <div class="campo">
+    <label for="texto">Texto</label>
+    <input pInputText id="texto" [value]="texto()" (input)="textoAlterado.emit(valorDe($event))" />
+  </div>
+</div>
+
+<div class="rolagem">
+  <table class="resultado">
+    <thead>
+      <tr>
+        <th scope="col">Pipe</th>
+        <th scope="col">pt-BR (LOCALE_ID da aplicação)</th>
+        <th scope="col">en-US (locale passado ao pipe)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>date: 'longDate'</code></td>
+        <td data-teste="data-pt">{{ data() | date: 'longDate' }}</td>
+        <td data-teste="data-en">{{ data() | date: 'longDate' : undefined : 'en-US' }}</td>
+      </tr>
+      <tr>
+        <td><code>date: 'EEEE'</code> (dia da semana)</td>
+        <td>{{ data() | date: 'EEEE' }}</td>
+        <td>{{ data() | date: 'EEEE' : undefined : 'en-US' }}</td>
+      </tr>
+      <tr>
+        <td><code>currency: 'BRL'</code></td>
+        <td data-teste="moeda-pt">{{ numero() | currency: 'BRL' }}</td>
+        <td>{{ numero() | currency: 'BRL' : 'symbol' : '1.2-2' : 'en-US' }}</td>
+      </tr>
+      <tr>
+        <td><code>number: '1.2-2'</code></td>
+        <td>{{ numero() | number: '1.2-2' }}</td>
+        <td>{{ numero() | number: '1.2-2' : 'en-US' }}</td>
+      </tr>
+      <tr>
+        <td><code>titlecase</code></td>
+        <td colspan="2" data-teste="titulo">{{ texto() | titlecase }}</td>
+      </tr>
+      <tr>
+        <td><code>telefone</code> (pipe do projeto)</td>
+        <td colspan="2" data-teste="telefone">{{ telefone() | telefone }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

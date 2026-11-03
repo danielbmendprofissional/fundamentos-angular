@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="pt-BR" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="i18n.painel.titulo" datatype="html">
+        <source>Texto marcado para tradução</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.painel.ola" datatype="html">
+        <source>Olá, <x id="INTERPOLATION" equiv-text="{{ nome() }}"/>!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+        <note priority="1" from="description">Saudação com o nome digitado</note>
+      </trans-unit>
+      <trans-unit id="i18n.painel.rotulo-nome" datatype="html">
+        <source>Seu nome</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.painel.placeholder-nome" datatype="html">
+        <source>Digite um nome</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.painel.itens" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {Nenhum item} =1 {Um item} other {<x id="INTERPOLATION"/> itens}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">25,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.painel.adicionar" datatype="html">
+        <source>Adicionar item</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.painel.zerar" datatype="html">
+        <source>Zerar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.painel.formatos" datatype="html">
+        <source>Formatos do idioma ativo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">31,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.painel.locale-ativo" datatype="html">
+        <source>Locale ativo (LOCALE_ID)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.painel.data" datatype="html">
+        <source>Data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.painel.valor" datatype="html">
+        <source>Valor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-painel/i18n-painel.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.service.saudacao" datatype="html">
+        <source>Bem-vindo(a) ao laboratório, <x id="nome" equiv-text="this.nomeAtual()"/>!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n-service.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">Saudação montada no TypeScript</note>
+      </trans-unit>
+      <trans-unit id="i18n.pagina.titulo" datatype="html">
+        <source>Internacionalização (i18n)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.pagina.resumo" datatype="html">
+        <source>O Angular traduz em tempo de build: você marca os textos (atributo i18n, i18n-atributo e $localize), extrai para um arquivo XLIFF, traduz e gera um build por idioma. Datas, moedas e números não precisam de marcação: os pipes seguem o LOCALE_ID.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.exp.1" datatype="html">
+        <source>Rode &quot;npm run start:en&quot; e abra a página: o texto marcado aparece em inglês e o locale ativo muda para en.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.exp.2" datatype="html">
+        <source>Compare a data e o valor nos dois idiomas: os pipes seguem o LOCALE_ID, sem nenhuma marcação i18n.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.exp.3" datatype="html">
+        <source>Clique em &quot;Adicionar item&quot; e leia o plural: &quot;Nenhum item&quot;, &quot;Um item&quot;, &quot;3 itens&quot;.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="i18n.exp.4" datatype="html">
+        <source>Abra src/locale/messages.xlf: cada texto marcado tem um id fixo (@@) que a tradução em messages.en.xlf referencia.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/i18n/i18n.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

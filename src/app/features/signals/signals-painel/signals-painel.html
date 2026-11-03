@@ -1,0 +1,44 @@
+<dl class="valores">
+  <div>
+    <dt>valor <small>(signal)</small></dt>
+    <dd class="grande" data-teste="valor">{{ valor() }}</dd>
+  </div>
+  <div>
+    <dt>dobro <small>(computed)</small></dt>
+    <dd data-teste="dobro">{{ dobro() }}</dd>
+  </div>
+  <div>
+    <dt>é par? <small>(computed)</small></dt>
+    <dd>{{ ehPar() ? 'sim' : 'não' }}</dd>
+  </div>
+</dl>
+
+<div class="acoes">
+  <p-button label="−" severity="secondary" ariaLabel="Diminuir" (onClick)="decrementar.emit()" />
+  <p-button label="+" ariaLabel="Aumentar" (onClick)="incrementar.emit()" />
+  <p-button label="Zerar" severity="secondary" [outlined]="true" (onClick)="zerar.emit()" />
+</div>
+
+<div class="passos" role="group" aria-label="Passo do contador">
+  <span>Passo (signal):</span>
+  @for (p of passos; track p) {
+    <p-button
+      [label]="'' + p"
+      size="small"
+      [outlined]="p !== passo()"
+      [attr.aria-pressed]="p === passo()"
+      (onClick)="passoAlterado.emit(p)"
+    />
+  }
+</div>
+
+<h2>Histórico <small>(effect)</small></h2>
+@if (registro().length === 0) {
+  <p>Sem registros ainda.</p>
+} @else {
+  <ul class="registro" data-teste="registro">
+    @for (linha of registro(); track $index) {
+      <li>{{ linha }}</li>
+    }
+  </ul>
+}

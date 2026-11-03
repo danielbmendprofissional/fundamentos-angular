@@ -1,0 +1,66 @@
+<!-- Primeiro item focável da página: aparece só ao receber foco (Tab). -->
+<a class="pular" href="#conteudo" (click)="pularParaConteudo($event)">Pular para o conteúdo</a>
+
+<header class="topo">
+  <!-- Elemento nativo <button>: foco e teclado funcionam sem código extra. -->
+  <button
+    type="button"
+    class="alternar"
+    aria-label="Abrir ou fechar o menu"
+    aria-controls="menu-lateral"
+    [attr.aria-expanded]="menuAberto()"
+    (click)="alternarMenu()"
+  >
+    <span class="pi pi-bars" aria-hidden="true"></span>
+  </button>
+
+  <a routerLink="/" class="marca">Fundamentos Angular</a>
+
+  <div class="sessao">
+    @if (auth.user(); as usuario) {
+      <span>{{ usuario.name }}</span>
+      <p-button label="Sair" size="small" severity="secondary" [outlined]="true" (onClick)="auth.logout()" />
+    } @else {
+      <p-button label="Entrar" size="small" (onClick)="auth.login('/usuarios')" />
+    }
+  </div>
+</header>
+
+<div class="corpo">
+  <nav id="menu-lateral" class="menu" [class.aberto]="menuAberto()" aria-label="Fundamentos">
+    @for (grupo of grupos; track grupo.titulo) {
+      <h2 class="grupo">{{ grupo.titulo }}</h2>
+      <ul>
+        @for (item of grupo.itens; track item.rota) {
+          <li>
+            <!-- exact: /usuarios e /usuarios/novo são páginas diferentes, não pai e filho. -->
+            <a
+              [routerLink]="item.rota"
+              routerLinkActive="ativo"
+              ariaCurrentWhenActive="page"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="fecharMenu()"
+            >
+              <span>{{ item.rotulo }}</span>
+              @if (item.perfis) {
+                <small class="selo">{{ item.perfis.join(', ') }}</small>
+              }
+              @if (item.exigeLogin && !auth.isAuthenticated()) {
+                <span class="pi pi-lock" role="img" aria-label="Exige login"></span>
+              }
+            </a>
+          </li>
+        }
+      </ul>
+    }
+  </nav>
+
+  @if (menuAberto()) {
+    <button type="button" class="fundo" aria-label="Fechar o menu" (click)="fecharMenu()"></button>
+  }
+
+  <!-- tabindex="-1": recebe foco por código (após navegar), mas não entra na ordem do Tab. -->
+  <main id="conteudo" #conteudo class="conteudo" tabindex="-1">
+    <router-outlet />
+  </main>
+</div>

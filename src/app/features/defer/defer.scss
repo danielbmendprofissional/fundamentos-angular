@@ -1,0 +1,28 @@
+.bloco {
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 1.1rem;
+  }
+}
+
+.gatilho {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--p-content-border-color);
+  border-radius: 6px;
+  background: var(--p-content-background);
+  color: inherit;
+  cursor: pointer;
+}
+
+.espaco {
+  display: grid;
+  place-items: center;
+  min-height: 90vh;
+  color: var(--p-text-muted-color);
+}
+
+// Reserva a altura final aproximada, para o conteúdo não empurrar a página ao chegar.
+.reserva {
+  min-height: 4rem;
+}

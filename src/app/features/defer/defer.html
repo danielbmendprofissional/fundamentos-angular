@@ -1,0 +1,47 @@
+<app-fundamento
+  titulo="@defer (views adiáveis)"
+  resumo="@defer carrega o código de parte do template só quando um gatilho dispara (interação, viewport, timer, idle...), reduzindo o bundle inicial. @placeholder aparece antes, @loading durante o download e @error se falhar. O guia recomenda não adiar conteúdo acima da dobra, por causa do deslocamento de layout."
+  [experimente]="experimente"
+  [fontes]="fontes"
+  [aprofundamento]="['defer.md']"
+>
+  <!-- aria-live: o leitor de tela é avisado quando o conteúdo adiado substitui o placeholder. -->
+  <section class="bloco" aria-live="polite" aria-labelledby="t-interacao">
+    <h2 id="t-interacao">1. on interaction</h2>
+    @defer (on interaction) {
+      <app-bloco-diferido gatilho="on interaction" />
+    } @placeholder {
+      <!-- Com "on interaction" sem argumento, o elemento raiz do placeholder é o gatilho. -->
+      <button type="button" class="gatilho">Carregar</button>
+    } @loading (minimum 500ms) {
+      <p>Carregando...</p>
+    } @error {
+      <p role="alert">Não foi possível carregar o bloco.</p>
+    }
+  </section>
+
+  <section class="bloco" aria-live="polite" aria-labelledby="t-timer">
+    <h2 id="t-timer">2. on timer(3s)</h2>
+    @defer (on timer(3s)) {
+      <app-bloco-diferido gatilho="on timer(3s)" />
+    } @placeholder {
+      <p>Vai carregar sozinho em 3 segundos.</p>
+    } @loading (minimum 500ms) {
+      <p>Carregando...</p>
+    }
+  </section>
+
+  <!-- Espaço para empurrar o bloco abaixo para fora da tela. -->
+  <div class="espaco" aria-hidden="true">Role para baixo ↓</div>
+
+  <section class="bloco" aria-live="polite" aria-labelledby="t-viewport">
+    <h2 id="t-viewport">3. on viewport</h2>
+    @defer (on viewport) {
+      <app-bloco-diferido gatilho="on viewport" />
+    } @placeholder {
+      <p class="reserva">Ainda não apareceu na tela.</p>
+    } @loading (minimum 500ms) {
+      <p>Carregando...</p>
+    }
+  </section>
+</app-fundamento>

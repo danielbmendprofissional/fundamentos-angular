@@ -1,0 +1,55 @@
+<section class="bloco" aria-labelledby="titulo-anuncio">
+  <h2 id="titulo-anuncio">1. Anunciar para o leitor de tela (LiveAnnouncer)</h2>
+  <div class="campo">
+    <label for="anuncio">Mensagem</label>
+    <input pInputText id="anuncio" #anuncio value="Cadastro salvo com sucesso" />
+  </div>
+  <div class="acoes">
+    <p-button label="Anunciar (polite)" size="small" (onClick)="anunciar.emit({ mensagem: anuncio.value, urgente: false })" />
+    <p-button label="Anunciar (assertive)" size="small" severity="danger" [outlined]="true" (onClick)="anunciar.emit({ mensagem: anuncio.value, urgente: true })" />
+  </div>
+  @if (historico().length) {
+    <ul data-teste="anuncios">
+      @for (texto of historico(); track $index) {
+        <li>{{ texto }}</li>
+      }
+    </ul>
+  }
+</section>
+
+<section class="bloco" aria-labelledby="titulo-dialogo">
+  <h2 id="titulo-dialogo">2. Foco preso em diálogo (cdkTrapFocus)</h2>
+  <p-button label="Abrir diálogo" size="small" (onClick)="abrirDialogo.emit()" />
+
+  @if (dialogoAberto()) {
+    <!-- role=dialog + aria-modal: o leitor trata o resto da página como inativo.
+         cdkTrapFocus mantém o Tab dentro do diálogo; AutoCapture foca o primeiro controle
+         e devolve o foco ao botão que abriu quando o diálogo fecha. -->
+    <div
+      class="dialogo"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="titulo-dialogo-aberto"
+      cdkTrapFocus
+      [cdkTrapFocusAutoCapture]="true"
+      (keydown.escape)="fecharDialogo.emit()"
+    >
+      <h3 id="titulo-dialogo-aberto">Confirmar ação</h3>
+      <p>Pressione Tab: o foco circula só entre os botões abaixo. Esc ou "Fechar" devolve o foco.</p>
+      <div class="acoes">
+        <p-button label="Confirmar" size="small" (onClick)="fecharDialogo.emit()" />
+        <p-button label="Fechar" size="small" severity="secondary" [outlined]="true" (onClick)="fecharDialogo.emit()" />
+      </div>
+    </div>
+  }
+</section>
+
+<section class="bloco" aria-labelledby="titulo-nativos">
+  <h2 id="titulo-nativos">3. O que já existe neste projeto</h2>
+  <ul>
+    <li>Menu com links nativos <code>&lt;a&gt;</code> e <code>aria-current="page"</code> no item ativo (use Tab e inspecione).</li>
+    <li>Botão do menu é um <code>&lt;button&gt;</code> nativo com <code>aria-expanded</code> e <code>aria-controls</code>.</li>
+    <li>Link "Pular para o conteúdo": aperte Tab logo ao carregar a página.</li>
+    <li>Foco movido para o conteúdo a cada navegação (<code>NavigationEnd</code>).</li>
+  </ul>
+</section>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="pt-BR" target-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="i18n.painel.titulo" datatype="html">
+        <source>Texto marcado para tradução</source>
+        <target>Text marked for translation</target>
+      </trans-unit>
+      <trans-unit id="i18n.painel.ola" datatype="html">
+        <source>Olá, <x id="INTERPOLATION" equiv-text="{{ nome() }}"/>!</source>
+        <target>Hello, <x id="INTERPOLATION" equiv-text="{{ nome() }}"/>!</target>
+      </trans-unit>
+      <trans-unit id="i18n.painel.rotulo-nome" datatype="html">
+        <source>Seu nome</source>
+        <target>Your name</target>
+      </trans-unit>
+      <trans-unit id="i18n.painel.placeholder-nome" datatype="html">
+        <source>Digite um nome</source>
+        <target>Type a name</target>
+      </trans-unit>
+      <trans-unit id="i18n.painel.itens" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {Nenhum item} =1 {Um item} other {<x id="INTERPOLATION"/> itens}}</source>
+        <target>{VAR_PLURAL, plural, =0 {No items} =1 {One item} other {<x id="INTERPOLATION"/> items}}</target>
+      </trans-unit>
+      <trans-unit id="i18n.painel.adicionar" datatype="html">
+        <source>Adicionar item</source>
+        <target>Add item</target>
+      </trans-unit>
+      <trans-unit id="i18n.painel.zerar" datatype="html">
+        <source>Zerar</source>
+        <target>Reset</target>
+      </trans-unit>
+      <trans-unit id="i18n.painel.formatos" datatype="html">
+        <source>Formatos do idioma ativo</source>
+        <target>Formats of the active language</target>
+      </trans-unit>
+      <trans-unit id="i18n.painel.locale-ativo" datatype="html">
+        <source>Locale ativo (LOCALE_ID)</source>
+        <target>Active locale (LOCALE_ID)</target>
+      </trans-unit>
+      <trans-unit id="i18n.painel.data" datatype="html">
+        <source>Data</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="i18n.painel.valor" datatype="html">
+        <source>Valor</source>
+        <target>Amount</target>
+      </trans-unit>
+      <trans-unit id="i18n.service.saudacao" datatype="html">
+        <source>Bem-vindo(a) ao laboratório, <x id="nome" equiv-text="this.nomeAtual()"/>!</source>
+        <target>Welcome to the lab, <x id="nome" equiv-text="this.nomeAtual()"/>!</target>
+      </trans-unit>
+      <trans-unit id="i18n.pagina.titulo" datatype="html">
+        <source>Internacionalização (i18n)</source>
+        <target>Internationalization (i18n)</target>
+      </trans-unit>
+      <trans-unit id="i18n.pagina.resumo" datatype="html">
+        <source>O Angular traduz em tempo de build: você marca os textos (atributo i18n, i18n-atributo e $localize), extrai para um arquivo XLIFF, traduz e gera um build por idioma. Datas, moedas e números não precisam de marcação: os pipes seguem o LOCALE_ID.</source>
+        <target>Angular translates at build time: you mark the texts (the i18n attribute, i18n-attribute and $localize), extract them to an XLIFF file, translate, and generate one build per language. Dates, currencies and numbers need no marking: the pipes follow the LOCALE_ID.</target>
+      </trans-unit>
+      <trans-unit id="i18n.exp.1" datatype="html">
+        <source>Rode &quot;npm run start:en&quot; e abra a página: o texto marcado aparece em inglês e o locale ativo muda para en.</source>
+        <target>Run &quot;npm run start:en&quot; and open the page: the marked text appears in English and the active locale changes to en.</target>
+      </trans-unit>
+      <trans-unit id="i18n.exp.2" datatype="html">
+        <source>Compare a data e o valor nos dois idiomas: os pipes seguem o LOCALE_ID, sem nenhuma marcação i18n.</source>
+        <target>Compare the date and the amount in both languages: the pipes follow the LOCALE_ID, with no i18n marking at all.</target>
+      </trans-unit>
+      <trans-unit id="i18n.exp.3" datatype="html">
+        <source>Clique em &quot;Adicionar item&quot; e leia o plural: &quot;Nenhum item&quot;, &quot;Um item&quot;, &quot;3 itens&quot;.</source>
+        <target>Click &quot;Add item&quot; and read the plural: &quot;No items&quot;, &quot;One item&quot;, &quot;3 items&quot;.</target>
+      </trans-unit>
+      <trans-unit id="i18n.exp.4" datatype="html">
+        <source>Abra src/locale/messages.xlf: cada texto marcado tem um id fixo (@@) que a tradução em messages.en.xlf referencia.</source>
+        <target>Open src/locale/messages.xlf: each marked text has a fixed id (@@) that the translation in messages.en.xlf references.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

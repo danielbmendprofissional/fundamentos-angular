@@ -1,10 +1,18 @@
-<h1>Novo usuário</h1>
+<app-fundamento
+  titulo="Reactive Forms e erros do servidor"
+  resumo="Formulário com Reactive Forms tipados: validators reutilizáveis, mensagens por campo e erros de campo devolvidos pelo servidor (Problem Details) aplicados ao controle. O formulário é dumb: valida e emite o payload; quem chama a API é o service do caso de uso."
+  [experimente]="experimente"
+  [fontes]="fontes"
+  [aprofundamento]="['formularios-reactive-vs-signal-forms.md', 'erros-e-autenticacao-bff.md']"
+>
+  <p class="acoes"><a routerLink="/usuarios/novo-signal-forms">Ver versão Signal Forms</a></p>
 
-<section class="card" aria-label="Novo usuário">
-  <app-usuario-form
-    [salvando]="service.salvando()"
-    [erroServidor]="service.erro()"
-    (enviado)="cadastrar($event)"
-    (cancelado)="voltar()"
-  />
-</section>
+  <section class="card" aria-label="Novo usuário">
+    <app-usuario-form
+      [salvando]="service.salvando()"
+      [erroServidor]="service.erro()"
+      (enviado)="cadastrar($event)"
+      (cancelado)="voltar()"
+    />
+  </section>
+</app-fundamento>
