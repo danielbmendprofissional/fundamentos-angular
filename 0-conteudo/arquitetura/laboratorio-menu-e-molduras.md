@@ -1,7 +1,5 @@
 # O laboratório: menu lateral e moldura de fundamento
 
-> Este conteúdo descreve **uma decisão do projeto**, não uma recomendação do Angular. Os termos "laboratório" e "moldura" são nossos; nos arquivos usamos só o nome do que a coisa é (`signals.html`, `pipes.html`...), como pede o [guia de estilo](https://angular.dev/style-guide) ("file names should generally describe the contents").
-
 ## Ideia
 Cada item do menu lateral abre **uma página de um fundamento do Angular** com: título, resumo, "o que experimentar", um exemplo executável (botões, formulários, requisições) e links para a fonte oficial.
 
